@@ -1,7 +1,7 @@
 # Customer-Churn-Prediction
 ### Customer Churn prediction and Retention Analysis
 
-**Customer Churn Rate is a metric used to measure the percentage of customer discontinuation of a service or product provided within a certain period of time. This is something that companies must pay attention to because the Customer Churn Rate is an obstacle to growth. Aside from inhibiting the growth, loss of customers also means a loss of income (Revenue Churn Rate).**
+#### Customer Churn Rate is a metric used to measure the percentage of customer discontinuation of a service or product provided within a certain period of time. This is something that companies must pay attention to because the Customer Churn Rate is an obstacle to growth. Aside from inhibiting the growth, loss of customers also means a loss of income (Revenue Churn Rate).
 
 This project analyzes the customer purchase history to group customers based on their buying behavior and identify who is likely to stop buying. Build a model to predict at-risk customers and estimate how much value each customer brings to the business, helping the company focus retention efforts where they matter most.
 
@@ -70,7 +70,5 @@ Identified and resolved data leakage where recency (a model feature) was directl
 Implemented time-based window splitting — the production-standard approach for churn and event-prediction models — separating feature calculation and label creation into non-overlapping time periods.
 3. Segmentation Method Selection
 Evaluated K-Means (failed due to RFM skewness and L-shaped distribution), log transformation (insufficient improvement), DBSCAN (unsuitable due to density variation and high noise rate), and GMM before settling on custom business-defined bins as primary method — validated by GMM independently.
-4. Class Imbalance Assessment
-Assessed actual class distribution (67/33) before applying SMOTE — correctly concluded mild imbalance did not warrant synthetic oversampling. Used scale_pos_weight instead.
-5. Recall-First Model Selection
+4. Recall-First Model Selection
 Finalised Gradient Boosting over XGBoost based on False Negative minimisation — correctly identifying that in churn prediction, missing a real churner (FN) is more costly than a false alarm (FP).
