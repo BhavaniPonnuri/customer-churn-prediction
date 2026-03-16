@@ -1,5 +1,5 @@
-# Customer Churn Prediction
-#### Customer Churn prediction and Retention Analysis
+# Customer-Churn-Prediction
+### Customer Churn prediction and Retention Analysis
 
 **Customer Churn Rate is a metric used to measure the percentage of customer discontinuation of a service or product provided within a certain period of time. This is something that companies must pay attention to because the Customer Churn Rate is an obstacle to growth. Aside from inhibiting the growth, loss of customers also means a loss of income (Revenue Churn Rate).**
 
