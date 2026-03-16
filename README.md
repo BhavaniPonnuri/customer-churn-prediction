@@ -11,39 +11,49 @@ This repository contains scripts or source code about how to predict customer ch
 
 
 ### Project Architecture
+```
 Raw Transactions (541K rows)
-        │
-        ▼
-   Data Cleaning
-   (nulls, cancellations, zero prices, duplicates)
-        │
-        ▼
- Time-Based Window Split
- ┌──────────────────────────────────┐
- │  Training Window                 │  Prediction Window
- │  Dec 2010 – Aug 2011             │  Sep 2011 – Dec 2011
- │  → RFM Feature Engineering       │  → Churn Label Creation
- └──────────────────────────────────┘
-        │                                      │
-        ▼                                      ▼
-  Customer-Level RFM Table  ←── churn label stamped per customer
-        │
-        ▼
-  Segmentation                    Churn Prediction
-  ├── Custom Business Bins         ├── Logistic Regression
-  └── GMM Clustering (validation)  ├── Random Forest
-                                   ├── XGBoost
-                                   └── Gradient Boosting ← Final Model
-        │
-        ▼
-  CLV Estimation + Business Insights
+         |
+         v
+    Data Cleaning
+         |
+         v
+  Time-Based Split
+         |
+   ______|______
+  |             |
+  v             v
+Training       Prediction
+Window         Window
+Dec 2010       Sep 2011
+Aug 2011       Dec 2011
+(RFM Features) (Churn Labels)
+  |             |
+  |_____________|
+         |
+         v
+  RFM Feature Table
+  (features + churn label per customer)
+         |
+    _____|_____
+   |           |
+   v           v
+Segmentation  Churn Model
+Custom Bins   Gradient Boosting
++ GMM         (Final Model)
+   |           |
+   |___________|
+         |
+         v
+  CLV + Business Insights
+```
 
 ### Tech Stack:
 Python, pandas, scikitlearn, xgboost, matplotlib, numpy
 
 ### How to Run
 1. Clone the repository
-git clone https://github.com/BhavaniPonnuri/customer-segmentation-retention.git
+git clone https://github.com/BhavaniPonnuri/customer-churn-prediction.git
 cd customer-segmentation-retention
 2. Install dependencies
 pip install pandas numpy matplotlib seaborn scikit-learn xgboost
